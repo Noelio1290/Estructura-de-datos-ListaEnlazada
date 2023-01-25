@@ -17,13 +17,34 @@ class Lista {
 
     addBigList = (arreglo) => {
         for(let i=0; i<=arreglo.length-1; i++){
-            console.log(arreglo[i])
             let persona = arreglo[i]
             let nombre = persona.nombre
             let apellido = persona.apellido
             this.add(nombre,apellido)
         }
-    }
+    };
+    
+    print = () => {
+        let refe =this.head
+        while(refe){
+            console.log(refe.nombre,refe.apellido)
+            refe = refe.next
+        }
+    };
+
+    getPerson(nombre,apellido) {
+        let refe = this.head;
+        while (refe) {
+          if (refe.nombre === nombre && refe.apellido ===apellido ) {
+            console.log("si esta en la lista!!")
+            return refe;
+          }
+          refe = refe.next;
+        }
+        console.log("no esta en la lista!!")
+        return null;
+      }
+    
 };
 
 
@@ -52,13 +73,15 @@ let arreglo = [
         apellido: "Lezama"
     },
     {
-        nombre: "Jorge",
+        nombre: "Jorge",s
         apellido: "Yedra"
     },
 ];
-console.log(list)
 list.addBigList(arreglo,list.add)
 console.log(list)
+list.print()
+list.getPerson("Jorge","Yedra")
+list.getPerson("Jorge","zambrano")
 
 
 //list.add("Noel","Zamora")
@@ -67,3 +90,5 @@ console.log(list)
 //list.add("Jorge","Yedra")
 //console.log(list)
 //console.log(list.head.next)
+
+list.getPerson('noel')
