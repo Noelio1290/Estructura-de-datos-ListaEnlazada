@@ -1,9 +1,9 @@
 class Lista {
     constructor(){
         this.head = null
-    }
+    };
 
-    add =(nombre,apellido)=>{
+    add = (nombre,apellido) => {
         if(this.head === null){
             this.head = new Nodo(nombre,apellido)
         } else {
@@ -12,6 +12,16 @@ class Lista {
                 refe = refe.next
             }
             refe.next = new Nodo(nombre,apellido)
+        }
+    };
+
+    addBigList = (arreglo) => {
+        for(let i=0; i<=arreglo.length-1; i++){
+            console.log(arreglo[i])
+            let persona = arreglo[i]
+            let nombre = persona.nombre
+            let apellido = persona.apellido
+            this.add(nombre,apellido)
         }
     }
 };
@@ -28,9 +38,32 @@ class Nodo {
 let list = new Lista()
 console.log(list)
 
-list.add("Noel","Zamora")
-list.add("Monserrat","Gordillo")
-list.add("Armando","Lezama")
-list.add("Jorge","Yedra")
+let arreglo = [
+    {
+        nombre: "Noel",
+        apellido: "Zamora"
+    },
+    {
+        nombre: "Monse",
+        apellido: "Gordillo"
+    },
+    {
+        nombre: "Armando",
+        apellido: "Lezama"
+    },
+    {
+        nombre: "Jorge",
+        apellido: "Yedra"
+    },
+];
 console.log(list)
-console.log(list.head.next)
+list.addBigList(arreglo,list.add)
+console.log(list)
+
+
+//list.add("Noel","Zamora")
+//list.add("Monserrat","Gordillo")
+//list.add("Armando","Lezama")
+//list.add("Jorge","Yedra")
+//console.log(list)
+//console.log(list.head.next)
